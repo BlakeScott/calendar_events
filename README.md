@@ -16,3 +16,5 @@ As a new user, these are the recommended step to follow for getting started with
 6. Run `git clone https://github.com/bjkropff/calendar_events.git`.
 7. Run `drush cc` from DevDesktop.
 8. Install the "Calendar Events" module.
+
+Note: After making any changes be sure to run `drush cc`.

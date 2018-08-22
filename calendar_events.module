@@ -2,6 +2,7 @@
 function calendar_events_menu() {
   $items = array();
   $items['calendar_events'] = array(
+    // Page Title
     'title' => 'First test page',
     'description' => 'The page will test our new module.',
     'page callback' => 'calendar_events_callback',
@@ -11,5 +12,6 @@ function calendar_events_menu() {
 }
 
 function calendar_events_callback() {
+  //Page body
   return 'First test page callback';
 }
