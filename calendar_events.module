@@ -1,4 +1,15 @@
 <?php
-function calendar_events() {
-  
+function calendar_events_menu() {
+  $items = array();
+  $items['calendar_events'] = array(
+    'title' => 'First test page',
+    'description' => 'The page will test our new module.',
+    'page callback' => 'calendar_events_callback',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+function calendar_events_callback() {
+  return 'First test page callback';
 }
