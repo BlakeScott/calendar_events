@@ -12,6 +12,17 @@ function calendar_events_menu() {
 }
 
 function calendar_events_callback() {
+  // ATTEMPT #1
   //Page body
-  return 'First test page callback';
+ $iframe =
+ '<iframe onload="console.log(`working`);" src="https://calendar.google.com/calendar/embed?src=acquia.com_6dsb9p7nq9kstbkqa2e8cqnhl4%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+    <script type="text/javascript">
+     console.log("Hello");
+     </script>';
+     return $iframe;
+
+
+  //    $homepage = '<iframe src="https://calendar.google.com/calendar/embed?src=acquia.com_6dsb9p7nq9kstbkqa2e8cqnhl4%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>';
+  // return $homepage;
 }
