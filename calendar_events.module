@@ -1,0 +1,31 @@
+<?php
+function calendar_events_menu() {
+  $items = array();
+  $items['calendar_events'] = array(
+    // Page Title
+    'title' => 'First test page',
+    'description' => 'The page will test our new module.',
+    'page callback' => 'calendar_events_callback',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+function calendar_events_callback() {
+  // ATTEMPT #1
+  // Page body
+  // Insert public calendar URL where it states <YOUR PUBLIC CALENDAR HERE>.
+  // Besure to replace the single quotes will double quote
+ $iframe =
+ '<iframe onload="console.log(`working`);" src='<YOUR PUBLIC CALENDAR HERE>' style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+    <div class="example">First div element with class="example".</div>
+    <button onclick="myFunction()">Try it</button>
+    <script type="text/javascript">
+      function myFunction() {
+        var x = document.getElementsByClassName("calendar-container ");
+        x[0].innerHTML = "Hello World!";
+    }
+     </script>';
+     return $iframe;
+}
