@@ -1,28 +1,42 @@
 <?php
-function calendar_events_menu() {
-  $items = array();
-  $items['calendar_events'] = array(
-    // Page Title
-    'title' => 'First test page',
-    'description' => 'The page will test our new module.',
-    'page callback' => 'calendar_events_callback',
-    'access arguments' => array('access content'),
-  );
-  return $items;
+
+require_once DRUPAL_ROOT . '/vendor/google-api-php-client/vendor/autoload.php';
+
+
+$client = new Google_Client();
+$client->setApplicationName("My Application");
+$client->setDeveloperKey("");
+
+$service = new Google_Service_Calendar($client);
+
+
+$calendarId = 'blakerscott@gmail.com';
+$optParams = array(
+  'maxResults' => 10,
+  'orderBy' => 'startTime',
+  'singleEvents' => true,
+  'timeMin' => date('c'),
+);
+$results = $service->events->listEvents($calendarId, $optParams);
+$events = $results->getItems();
+
+if (empty($events)) {
+    print "No upcoming events found.\n";
+} else {
+    print "Upcoming events:\n";
+    foreach ($events as $event) {
+        $start = $event->start->dateTime;
+        if (empty($start)) {
+            $start = $event->start->date;
+        }
+        printf("%s (%s)\n", $event->getSummary(), $start);
+    }
 }
 
-function calendar_events_callback() {
-  // ATTEMPT #1
-  //Page body
- $iframe =
- '<iframe onload="console.log(`working`);" src="https://calendar.google.com/calendar/embed?src=acquia.com_6dsb9p7nq9kstbkqa2e8cqnhl4%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-
-    <script type="text/javascript">
-     console.log("Hello");
-     </script>';
-     return $iframe;
 
 
-  //    $homepage = '<iframe src="https://calendar.google.com/calendar/embed?src=acquia.com_6dsb9p7nq9kstbkqa2e8cqnhl4%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>';
-  // return $homepage;
-}
+
+
+
+
+
