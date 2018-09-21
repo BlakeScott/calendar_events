@@ -5,7 +5,7 @@ require_once DRUPAL_ROOT . '/vendor/google-api-php-client/vendor/autoload.php';
 
 $client = new Google_Client();
 $client->setApplicationName("My Application");
-$client->setDeveloperKey("");
+$client->setDeveloperKey("AIzaSyBb0CJdTTH926JMqOm51gInvKB57fYAuZ4");
 
 $service = new Google_Service_Calendar($client);
 
@@ -29,13 +29,9 @@ if (empty($events)) {
         if (empty($start)) {
             $start = $event->start->date;
         }
-        printf("%s (%s)\n", $event->getSummary(), $start);
+        printf("%s (%s)\n", $event->getSummary(), $event->getLocation(), $start);
     }
 }
-
-
-
-
 
 
 
