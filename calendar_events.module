@@ -30,6 +30,7 @@ if (empty($events)) {
             $start = $event->start->date;
         }
         printf("%s (%s)\n", $event->getSummary(), $event->getLocation(), $start);
+        echo "test";
     }
 }
 
