@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 ## Calendar Events module
 
 ---
