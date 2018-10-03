@@ -2,10 +2,13 @@
 
 require_once DRUPAL_ROOT . '/vendor/google-api-php-client/vendor/autoload.php';
 
-
+putenv('GOOGLE_APPLICATION_CREDENTIALS=./vendor/calendar-events-948c5f78be89.json');
 $client = new Google_Client();
-$client->setApplicationName("My Application");
-$client->setDeveloperKey("");
+$scopes = array('https://www.googleapis.com/auth/calendar.events.readonly');
+$client->useApplicationDefaultCredentials();
+$client->setScopes($scopes);
+//$client->setApplicationName("My Application");
+//$client->setDeveloperKey("AIzaSyBb0CJdTTH926JMqOm51gInvKB57fYAuZ4");
 
 $service = new Google_Service_Calendar($client);
 
