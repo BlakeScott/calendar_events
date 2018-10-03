@@ -1,7 +1,7 @@
 # Calendar Events module
 
 ---
-#### This repo contains a Drupal 7 module that pulls customer event information from the Customer calendar. This information is then posted as an internal comment in relevant Zendesk tickets. This module is part of the Swarm initiative being undertaken by Acquia Support.
+## This repo contains a Drupal 7 module that pulls customer event information from the Customer calendar. This information is then posted as an internal comment in relevant Zendesk tickets. This module is part of the Swarm initiative being undertaken by Acquia Support.
 
 ### As a new user, follow these steps to get started with this module:
 
@@ -19,7 +19,7 @@
 
 *Note: After making any changes, be sure to run `drush cc` :)*
 
-#### This module relies on Google's PHP API Client Library.  Take these steps to effectively install the library:
+### This module relies on Google's PHP API Client Library.  Take these steps to effectively install the library:
 
 1. Download the client at https://github.com/googleapis/google-api-php-client/releases.
 2. Unzip the client.
@@ -30,7 +30,7 @@
 For additional information about this library, check out:
 * https://developers.google.com/api-client-library/php/start/get_started.
 
-#### This module also relies on a Google Service Account.  This current iteration of the module specifically uses the following Service Account: `support-service-account@calendar-events-218305.iam.gserviceaccount.com`.
+### This module also relies on a Google Service Account.  This current iteration of the module specifically uses the following Service Account: `support-service-account@calendar-events-218305.iam.gserviceaccount.com`.
 
 When a Service Account is created, a public/private key pair is generated and downloaded to your machine; it serves as the only copy of this key.  Ask Blake for the .json file which contains the keys (note: let's figure out a Google Drive location where this file can live, so that all members of the project can access it).  Once you have obtained it, place the .json file in the same `vendor` directory where you added the PHP API Client Library.
 
