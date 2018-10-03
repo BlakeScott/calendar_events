@@ -1,9 +1,9 @@
-#### Event Calendar module
+## Calendar Events module
 
 ---
-This repository contains a Drupal 7 module that pulls customer event information from the Customer calendar. It will then be posted as an internal comment for Support members to see.  This module is part of the Swarm initiative being undertaken by Acquia Support.
+#### This repo contains a Drupal 7 module that pulls customer event information from the Customer calendar. This information is then posted as an internal comment in relevant Zendesk tickets. This module is part of the Swarm initiative being undertaken by Acquia Support.
 
-As a new user, these are the recommended step to follow for getting started with this module:
+##### As a new user, follow these steps to get started with this module:
 
 1. Add a new Drupal 7 application to Acquia Cloud
   a. Go to https://insight.acquia.com/subscriptions/add.
@@ -17,7 +17,9 @@ As a new user, these are the recommended step to follow for getting started with
 7. Run `drush cc` from DevDesktop.
 8. Install the "Calendar Events" module.
 
-This module relies on Google's PHP API Client Library.  Take these steps to effectively install the Library:
+*Note: After making any changes, be sure to run `drush cc` :)*
+
+##### This module relies on Google's PHP API Client Library.  Take these steps to effectively install the library:
 
 1. Download the client at https://github.com/googleapis/google-api-php-client/releases.
 2. Unzip the client.
@@ -25,4 +27,15 @@ This module relies on Google's PHP API Client Library.  Take these steps to effe
 4. Within your site's docroot, create a directory named 'vendor'.
 5. Place 'google-api-php-client' into 'vendor'.
 
-Note: After making any changes be sure to run `drush cc`.
+For additional information about this library, check out:
+* https://developers.google.com/api-client-library/php/start/get_started.
+
+##### This module also relies on a Google Service Account.  This current iteration of the module specifically uses the following Service Account: `support-service-account@calendar-events-218305.iam.gserviceaccount.com`.
+
+When a Service Account is created, a public/private key pair is generated and downloaded to your machine; it serves as the only copy of this key.  Ask Blake for the .json file which contains the keys (note: let's figure out a Google Drive location where this file can live, so that all members of the project can access it).  Once you have obtained it, place the .json file in the same `vendor` directory where you added the PHP API Client Library.
+
+*Note: If you end up using a different Service Account, the email address for that account will have to be added to the `Share with specific people` list, located with the Customer Calendar's settings.*
+
+For additional information about working with Service Accounts, check out:
+* https://developers.google.com/api-client-library/php/auth/service-accounts
+* https://cloud.google.com/iam/docs/creating-managing-service-accounts.
