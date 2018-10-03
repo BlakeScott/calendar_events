@@ -1,31 +1,37 @@
 <?php
-function calendar_events_menu() {
-  $items = array();
-  $items['calendar_events'] = array(
-    // Page Title
-    'title' => 'First test page',
-    'description' => 'The page will test our new module.',
-    'page callback' => 'calendar_events_callback',
-    'access arguments' => array('access content'),
-  );
-  return $items;
-}
 
-function calendar_events_callback() {
-  // ATTEMPT #1
-  // Page body
-  // Insert public calendar URL where it states <YOUR PUBLIC CALENDAR HERE>.
-  // Besure to replace the single quotes will double quote
- $iframe =
- '<iframe onload="console.log(`working`);" src='<YOUR PUBLIC CALENDAR HERE>' style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+require_once DRUPAL_ROOT . '/vendor/google-api-php-client/vendor/autoload.php';
 
-    <div class="example">First div element with class="example".</div>
-    <button onclick="myFunction()">Try it</button>
-    <script type="text/javascript">
-      function myFunction() {
-        var x = document.getElementsByClassName("calendar-container ");
-        x[0].innerHTML = "Hello World!";
+putenv('GOOGLE_APPLICATION_CREDENTIALS=./vendor/calendar-events-948c5f78be89.json');
+$client = new Google_Client();
+$scopes = array('https://www.googleapis.com/auth/calendar.events.readonly');
+$client->useApplicationDefaultCredentials();
+$client->setScopes($scopes);
+//$client->setApplicationName("My Application");
+//$client->setDeveloperKey("AIzaSyBb0CJdTTH926JMqOm51gInvKB57fYAuZ4");
+
+$service = new Google_Service_Calendar($client);
+
+
+$calendarId = 'blakerscott@gmail.com';
+$optParams = array(
+  'maxResults' => 10,
+  'orderBy' => 'startTime',
+  'singleEvents' => true,
+  'timeMin' => date('c'),
+);
+$results = $service->events->listEvents($calendarId, $optParams);
+$events = $results->getItems();
+
+if (empty($events)) {
+    print "No current events.\n";
+} else {
+    print "Current events:\n";
+    foreach ($events as $event) {
+        $start = $event->start->dateTime;
+        if (empty($start)) {
+            $start = $event->start->date;
+        }
+        printf("%s (%s)\n", $event->getSummary(), $event->getLocation(), $start);
     }
-     </script>';
-     return $iframe;
 }
