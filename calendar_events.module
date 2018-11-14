@@ -1,37 +1,43 @@
 <?php
+//require_once DRUPAL_ROOT . '/vendor/google-api-php-client/vendor/autoload.php';
+require_once DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/google-api-php-client/vendor/autoload.php';
 
-require_once DRUPAL_ROOT . '/vendor/google-api-php-client/vendor/autoload.php';
+function get_data_from_gcal() {
+    //putenv('GOOGLE_APPLICATION_CREDENTIALS=./sites/all/modules/custom/calendar_events/vendor/calendar-events-948c5f78be89.json');
+    putenv('GOOGLE_APPLICATION_CREDENTIALS=' . DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/calendar-events-948c5f78be89.json');
+    $client = new Google_Client();
+    $scopes = array('https://www.googleapis.com/auth/calendar.events.readonly');
+    $client->useApplicationDefaultCredentials();
+    $client->setScopes($scopes);
 
-putenv('GOOGLE_APPLICATION_CREDENTIALS=./vendor/calendar-events-948c5f78be89.json');
-$client = new Google_Client();
-$scopes = array('https://www.googleapis.com/auth/calendar.events.readonly');
-$client->useApplicationDefaultCredentials();
-$client->setScopes($scopes);
-//$client->setApplicationName("My Application");
-//$client->setDeveloperKey("AIzaSyBb0CJdTTH926JMqOm51gInvKB57fYAuZ4");
+    $service = new Google_Service_Calendar($client);
+    $calendarId = 'blakerscott@gmail.com';
+    $optParams = array(
+      'maxResults' => 10,
+      'orderBy' => 'startTime',
+      'singleEvents' => true,
+      'timeMin' => date('c'),
+    );
+    $results = $service->events->listEvents($calendarId, $optParams);
+    $events = $results->getItems();
+    # how long, in seconds, should these cached objects last?
+    $cache_lifetime = 3600;
+    # establish the current time as a unix timestamp.
+    $current_time = time();
 
-$service = new Google_Service_Calendar($client);
+    if (empty($events)) {
+      print "No current events.\n";
+    } else {
+      print "Current events:\n";
+      $array = array();
+        foreach ($events as $event) {
 
+          array_push($array, $event->getLocation());
 
-$calendarId = 'blakerscott@gmail.com';
-$optParams = array(
-  'maxResults' => 10,
-  'orderBy' => 'startTime',
-  'singleEvents' => true,
-  'timeMin' => date('c'),
-);
-$results = $service->events->listEvents($calendarId, $optParams);
-$events = $results->getItems();
-
-if (empty($events)) {
-    print "No current events.\n";
-} else {
-    print "Current events:\n";
-    foreach ($events as $event) {
-        $start = $event->start->dateTime;
-        if (empty($start)) {
-            $start = $event->start->date;
         }
-        printf("%s (%s)\n", $event->getSummary(), $event->getLocation(), $start);
+        print_r($array);
+        cache_set('cached_gcal_data', $array, 'cache', $current_time + $cache_lifetime);
     }
 }
+
+get_data_from_gcal();
