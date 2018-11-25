@@ -15,10 +15,13 @@
  * the License.
  */
 
-class Google_Service_Compute_Subnetwork extends Google_Model
+class Google_Service_Compute_Subnetwork extends Google_Collection
 {
+  protected $collection_key = 'secondaryIpRanges';
   public $creationTimestamp;
   public $description;
+  public $enableFlowLogs;
+  public $fingerprint;
   public $gatewayAddress;
   public $id;
   public $ipCidrRange;
@@ -27,6 +30,8 @@ class Google_Service_Compute_Subnetwork extends Google_Model
   public $network;
   public $privateIpGoogleAccess;
   public $region;
+  protected $secondaryIpRangesType = 'Google_Service_Compute_SubnetworkSecondaryRange';
+  protected $secondaryIpRangesDataType = 'array';
   public $selfLink;
 
   public function setCreationTimestamp($creationTimestamp)
@@ -44,6 +49,22 @@ class Google_Service_Compute_Subnetwork extends Google_Model
   public function getDescription()
   {
     return $this->description;
+  }
+  public function setEnableFlowLogs($enableFlowLogs)
+  {
+    $this->enableFlowLogs = $enableFlowLogs;
+  }
+  public function getEnableFlowLogs()
+  {
+    return $this->enableFlowLogs;
+  }
+  public function setFingerprint($fingerprint)
+  {
+    $this->fingerprint = $fingerprint;
+  }
+  public function getFingerprint()
+  {
+    return $this->fingerprint;
   }
   public function setGatewayAddress($gatewayAddress)
   {
@@ -108,6 +129,20 @@ class Google_Service_Compute_Subnetwork extends Google_Model
   public function getRegion()
   {
     return $this->region;
+  }
+  /**
+   * @param Google_Service_Compute_SubnetworkSecondaryRange
+   */
+  public function setSecondaryIpRanges($secondaryIpRanges)
+  {
+    $this->secondaryIpRanges = $secondaryIpRanges;
+  }
+  /**
+   * @return Google_Service_Compute_SubnetworkSecondaryRange
+   */
+  public function getSecondaryIpRanges()
+  {
+    return $this->secondaryIpRanges;
   }
   public function setSelfLink($selfLink)
   {

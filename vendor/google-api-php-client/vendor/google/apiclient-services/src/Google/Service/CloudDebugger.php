@@ -24,7 +24,7 @@
  *
  * <p>
  * For more information about this service, see the API
- * <a href="http://cloud.google.com/debugger" target="_blank">Documentation</a>
+ * <a href="https://cloud.google.com/debugger" target="_blank">Documentation</a>
  * </p>
  *
  * @author Google, Inc.
@@ -34,7 +34,7 @@ class Google_Service_CloudDebugger extends Google_Service
   /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
-  /** Manage cloud debugger. */
+  /** Use Stackdriver Debugger. */
   const CLOUD_DEBUGGER =
       "https://www.googleapis.com/auth/cloud_debugger";
 
@@ -193,10 +193,6 @@ class Google_Service_CloudDebugger extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'stripResults' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
                 'waitToken' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -214,6 +210,10 @@ class Google_Service_CloudDebugger extends Google_Service
                   'type' => 'boolean',
                 ),
                 'includeAllUsers' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'stripResults' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),

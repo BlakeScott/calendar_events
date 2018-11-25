@@ -19,9 +19,13 @@ class Google_Service_Bigquery_JobConfigurationQuery extends Google_Collection
 {
   protected $collection_key = 'userDefinedFunctionResources';
   public $allowLargeResults;
+  protected $clusteringType = 'Google_Service_Bigquery_Clustering';
+  protected $clusteringDataType = '';
   public $createDisposition;
   protected $defaultDatasetType = 'Google_Service_Bigquery_DatasetReference';
   protected $defaultDatasetDataType = '';
+  protected $destinationEncryptionConfigurationType = 'Google_Service_Bigquery_EncryptionConfiguration';
+  protected $destinationEncryptionConfigurationDataType = '';
   protected $destinationTableType = 'Google_Service_Bigquery_TableReference';
   protected $destinationTableDataType = '';
   public $flattenResults;
@@ -36,6 +40,8 @@ class Google_Service_Bigquery_JobConfigurationQuery extends Google_Collection
   public $schemaUpdateOptions;
   protected $tableDefinitionsType = 'Google_Service_Bigquery_ExternalDataConfiguration';
   protected $tableDefinitionsDataType = 'map';
+  protected $timePartitioningType = 'Google_Service_Bigquery_TimePartitioning';
+  protected $timePartitioningDataType = '';
   public $useLegacySql;
   public $useQueryCache;
   protected $userDefinedFunctionResourcesType = 'Google_Service_Bigquery_UserDefinedFunctionResource';
@@ -49,6 +55,20 @@ class Google_Service_Bigquery_JobConfigurationQuery extends Google_Collection
   public function getAllowLargeResults()
   {
     return $this->allowLargeResults;
+  }
+  /**
+   * @param Google_Service_Bigquery_Clustering
+   */
+  public function setClustering(Google_Service_Bigquery_Clustering $clustering)
+  {
+    $this->clustering = $clustering;
+  }
+  /**
+   * @return Google_Service_Bigquery_Clustering
+   */
+  public function getClustering()
+  {
+    return $this->clustering;
   }
   public function setCreateDisposition($createDisposition)
   {
@@ -71,6 +91,20 @@ class Google_Service_Bigquery_JobConfigurationQuery extends Google_Collection
   public function getDefaultDataset()
   {
     return $this->defaultDataset;
+  }
+  /**
+   * @param Google_Service_Bigquery_EncryptionConfiguration
+   */
+  public function setDestinationEncryptionConfiguration(Google_Service_Bigquery_EncryptionConfiguration $destinationEncryptionConfiguration)
+  {
+    $this->destinationEncryptionConfiguration = $destinationEncryptionConfiguration;
+  }
+  /**
+   * @return Google_Service_Bigquery_EncryptionConfiguration
+   */
+  public function getDestinationEncryptionConfiguration()
+  {
+    return $this->destinationEncryptionConfiguration;
   }
   /**
    * @param Google_Service_Bigquery_TableReference
@@ -177,6 +211,20 @@ class Google_Service_Bigquery_JobConfigurationQuery extends Google_Collection
   public function getTableDefinitions()
   {
     return $this->tableDefinitions;
+  }
+  /**
+   * @param Google_Service_Bigquery_TimePartitioning
+   */
+  public function setTimePartitioning(Google_Service_Bigquery_TimePartitioning $timePartitioning)
+  {
+    $this->timePartitioning = $timePartitioning;
+  }
+  /**
+   * @return Google_Service_Bigquery_TimePartitioning
+   */
+  public function getTimePartitioning()
+  {
+    return $this->timePartitioning;
   }
   public function setUseLegacySql($useLegacySql)
   {

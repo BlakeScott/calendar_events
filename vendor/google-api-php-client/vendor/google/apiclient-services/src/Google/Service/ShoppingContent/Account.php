@@ -17,10 +17,14 @@
 
 class Google_Service_ShoppingContent_Account extends Google_Collection
 {
-  protected $collection_key = 'users';
+  protected $collection_key = 'youtubeChannelLinks';
   public $adultContent;
   protected $adwordsLinksType = 'Google_Service_ShoppingContent_AccountAdwordsLink';
   protected $adwordsLinksDataType = 'array';
+  protected $businessInformationType = 'Google_Service_ShoppingContent_AccountBusinessInformation';
+  protected $businessInformationDataType = '';
+  protected $googleMyBusinessLinkType = 'Google_Service_ShoppingContent_AccountGoogleMyBusinessLink';
+  protected $googleMyBusinessLinkDataType = '';
   public $id;
   public $kind;
   public $name;
@@ -29,6 +33,8 @@ class Google_Service_ShoppingContent_Account extends Google_Collection
   protected $usersType = 'Google_Service_ShoppingContent_AccountUser';
   protected $usersDataType = 'array';
   public $websiteUrl;
+  protected $youtubeChannelLinksType = 'Google_Service_ShoppingContent_AccountYouTubeChannelLink';
+  protected $youtubeChannelLinksDataType = 'array';
 
   public function setAdultContent($adultContent)
   {
@@ -51,6 +57,34 @@ class Google_Service_ShoppingContent_Account extends Google_Collection
   public function getAdwordsLinks()
   {
     return $this->adwordsLinks;
+  }
+  /**
+   * @param Google_Service_ShoppingContent_AccountBusinessInformation
+   */
+  public function setBusinessInformation(Google_Service_ShoppingContent_AccountBusinessInformation $businessInformation)
+  {
+    $this->businessInformation = $businessInformation;
+  }
+  /**
+   * @return Google_Service_ShoppingContent_AccountBusinessInformation
+   */
+  public function getBusinessInformation()
+  {
+    return $this->businessInformation;
+  }
+  /**
+   * @param Google_Service_ShoppingContent_AccountGoogleMyBusinessLink
+   */
+  public function setGoogleMyBusinessLink(Google_Service_ShoppingContent_AccountGoogleMyBusinessLink $googleMyBusinessLink)
+  {
+    $this->googleMyBusinessLink = $googleMyBusinessLink;
+  }
+  /**
+   * @return Google_Service_ShoppingContent_AccountGoogleMyBusinessLink
+   */
+  public function getGoogleMyBusinessLink()
+  {
+    return $this->googleMyBusinessLink;
   }
   public function setId($id)
   {
@@ -113,5 +147,19 @@ class Google_Service_ShoppingContent_Account extends Google_Collection
   public function getWebsiteUrl()
   {
     return $this->websiteUrl;
+  }
+  /**
+   * @param Google_Service_ShoppingContent_AccountYouTubeChannelLink
+   */
+  public function setYoutubeChannelLinks($youtubeChannelLinks)
+  {
+    $this->youtubeChannelLinks = $youtubeChannelLinks;
+  }
+  /**
+   * @return Google_Service_ShoppingContent_AccountYouTubeChannelLink
+   */
+  public function getYoutubeChannelLinks()
+  {
+    return $this->youtubeChannelLinks;
   }
 }

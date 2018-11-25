@@ -84,7 +84,8 @@ class Google_Service_Dataflow_Resource_ProjectsLocationsJobs extends Google_Serv
     return $this->call('getMetrics', array($params), "Google_Service_Dataflow_JobMetrics");
   }
   /**
-   * List the jobs of a project. (jobs.listProjectsLocationsJobs)
+   * List the jobs of a project in a given region.
+   * (jobs.listProjectsLocationsJobs)
    *
    * @param string $projectId The project which owns the jobs.
    * @param string $location The location that contains this job.

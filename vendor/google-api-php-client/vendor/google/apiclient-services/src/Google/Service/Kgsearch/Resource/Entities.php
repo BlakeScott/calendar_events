@@ -32,6 +32,11 @@ class Google_Service_Kgsearch_Resource_Entities extends Google_Service_Resource
    *
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string languages The list of language codes (defined in ISO 693)
+   * to run the query with, e.g. 'en'.
+   * @opt_param string ids The list of entity id to be used for search instead of
+   * query string. To specify multiple ids in the HTTP request, repeat the
+   * parameter in the URL as in ...?ids=A=B
    * @opt_param int limit Limits the number of entities to be returned.
    * @opt_param bool prefix Enables prefix match against names and aliases of
    * entities
@@ -40,11 +45,6 @@ class Google_Service_Kgsearch_Resource_Entities extends Google_Service_Resource
    * Person (as defined in http://schema.org/Person). If multiple types are
    * specified, returned entities will contain one or more of these types.
    * @opt_param bool indent Enables indenting of json results.
-   * @opt_param string languages The list of language codes (defined in ISO 693)
-   * to run the query with, e.g. 'en'.
-   * @opt_param string ids The list of entity id to be used for search instead of
-   * query string. To specify multiple ids in the HTTP request, repeat the
-   * parameter in the URL as in ...?ids=A=B
    * @return Google_Service_Kgsearch_SearchResponse
    */
   public function search($optParams = array())

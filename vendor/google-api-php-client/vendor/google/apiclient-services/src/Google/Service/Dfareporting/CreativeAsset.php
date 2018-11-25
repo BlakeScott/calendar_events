@@ -20,6 +20,8 @@ class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
   protected $collection_key = 'detectedFeatures';
   public $actionScript3;
   public $active;
+  protected $additionalSizesType = 'Google_Service_Dfareporting_Size';
+  protected $additionalSizesDataType = 'array';
   public $alignment;
   public $artworkType;
   protected $assetIdentifierType = 'Google_Service_Dfareporting_CreativeAssetId';
@@ -46,9 +48,11 @@ class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
   public $id;
   protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
+  public $mediaDuration;
   public $mimeType;
   protected $offsetType = 'Google_Service_Dfareporting_OffsetPosition';
   protected $offsetDataType = '';
+  public $orientation;
   public $originalBackup;
   protected $positionType = 'Google_Service_Dfareporting_OffsetPosition';
   protected $positionDataType = '';
@@ -65,7 +69,6 @@ class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
   public $streamingServingUrl;
   public $transparency;
   public $verticallyLocked;
-  public $videoDuration;
   public $windowMode;
   public $zIndex;
   public $zipFilename;
@@ -86,6 +89,20 @@ class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
   public function getActive()
   {
     return $this->active;
+  }
+  /**
+   * @param Google_Service_Dfareporting_Size
+   */
+  public function setAdditionalSizes($additionalSizes)
+  {
+    $this->additionalSizes = $additionalSizes;
+  }
+  /**
+   * @return Google_Service_Dfareporting_Size
+   */
+  public function getAdditionalSizes()
+  {
+    return $this->additionalSizes;
   }
   public function setAlignment($alignment)
   {
@@ -285,6 +302,14 @@ class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
   {
     return $this->idDimensionValue;
   }
+  public function setMediaDuration($mediaDuration)
+  {
+    $this->mediaDuration = $mediaDuration;
+  }
+  public function getMediaDuration()
+  {
+    return $this->mediaDuration;
+  }
   public function setMimeType($mimeType)
   {
     $this->mimeType = $mimeType;
@@ -306,6 +331,14 @@ class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
   public function getOffset()
   {
     return $this->offset;
+  }
+  public function setOrientation($orientation)
+  {
+    $this->orientation = $orientation;
+  }
+  public function getOrientation()
+  {
+    return $this->orientation;
   }
   public function setOriginalBackup($originalBackup)
   {
@@ -430,14 +463,6 @@ class Google_Service_Dfareporting_CreativeAsset extends Google_Collection
   public function getVerticallyLocked()
   {
     return $this->verticallyLocked;
-  }
-  public function setVideoDuration($videoDuration)
-  {
-    $this->videoDuration = $videoDuration;
-  }
-  public function getVideoDuration()
-  {
-    return $this->videoDuration;
   }
   public function setWindowMode($windowMode)
   {

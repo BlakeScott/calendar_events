@@ -30,6 +30,12 @@
  */
 class Google_Service_Classroom extends Google_Service
 {
+  /** View and manage announcements in Google Classroom. */
+  const CLASSROOM_ANNOUNCEMENTS =
+      "https://www.googleapis.com/auth/classroom.announcements";
+  /** View announcements in Google Classroom. */
+  const CLASSROOM_ANNOUNCEMENTS_READONLY =
+      "https://www.googleapis.com/auth/classroom.announcements.readonly";
   /** Manage your Google Classroom classes. */
   const CLASSROOM_COURSES =
       "https://www.googleapis.com/auth/classroom.courses";
@@ -63,6 +69,9 @@ class Google_Service_Classroom extends Google_Service
   /** View the profile photos of people in your classes. */
   const CLASSROOM_PROFILE_PHOTOS =
       "https://www.googleapis.com/auth/classroom.profile.photos";
+  /** Receive notifications about your Google Classroom data. */
+  const CLASSROOM_PUSH_NOTIFICATIONS =
+      "https://www.googleapis.com/auth/classroom.push-notifications";
   /** Manage your Google Classroom class rosters. */
   const CLASSROOM_ROSTERS =
       "https://www.googleapis.com/auth/classroom.rosters";
@@ -78,11 +87,13 @@ class Google_Service_Classroom extends Google_Service
 
   public $courses;
   public $courses_aliases;
+  public $courses_announcements;
   public $courses_courseWork;
   public $courses_courseWork_studentSubmissions;
   public $courses_students;
   public $courses_teachers;
   public $invitations;
+  public $registrations;
   public $userProfiles;
   public $userProfiles_guardianInvitations;
   public $userProfiles_guardians;
@@ -134,15 +145,6 @@ class Google_Service_Classroom extends Google_Service
               'path' => 'v1/courses',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'teacherId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'courseStates' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                  'repeated' => true,
-                ),
                 'studentId' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -154,6 +156,15 @@ class Google_Service_Classroom extends Google_Service
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'teacherId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'courseStates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
                 ),
               ),
             ),'patch' => array(
@@ -237,6 +248,117 @@ class Google_Service_Classroom extends Google_Service
           )
         )
     );
+    $this->courses_announcements = new Google_Service_Classroom_Resource_CoursesAnnouncements(
+        $this,
+        $this->serviceName,
+        'announcements',
+        array(
+          'methods' => array(
+            'create' => array(
+              'path' => 'v1/courses/{courseId}/announcements',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'courseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete' => array(
+              'path' => 'v1/courses/{courseId}/announcements/{id}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'courseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
+              'path' => 'v1/courses/{courseId}/announcements/{id}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'courseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'v1/courses/{courseId}/announcements',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'courseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'announcementStates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ),
+                'orderBy' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),'modifyAssignees' => array(
+              'path' => 'v1/courses/{courseId}/announcements/{id}:modifyAssignees',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'courseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'patch' => array(
+              'path' => 'v1/courses/{courseId}/announcements/{id}',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'courseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),
+          )
+        )
+    );
     $this->courses_courseWork = new Google_Service_Classroom_Resource_CoursesCourseWork(
         $this,
         $this->serviceName,
@@ -310,6 +432,21 @@ class Google_Service_Classroom extends Google_Service
                   'repeated' => true,
                 ),
               ),
+            ),'modifyAssignees' => array(
+              'path' => 'v1/courses/{courseId}/courseWork/{id}:modifyAssignees',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'courseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'patch' => array(
               'path' => 'v1/courses/{courseId}/courseWork/{id}',
               'httpMethod' => 'PATCH',
@@ -373,14 +510,6 @@ class Google_Service_Classroom extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'userId' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'late' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -393,6 +522,14 @@ class Google_Service_Classroom extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                   'repeated' => true,
+                ),
+                'userId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'late' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'modifyAttachments' => array(
@@ -702,6 +839,30 @@ class Google_Service_Classroom extends Google_Service
                 'courseId' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->registrations = new Google_Service_Classroom_Resource_Registrations(
+        $this,
+        $this->serviceName,
+        'registrations',
+        array(
+          'methods' => array(
+            'create' => array(
+              'path' => 'v1/registrations',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
+            ),'delete' => array(
+              'path' => 'v1/registrations/{registrationId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'registrationId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

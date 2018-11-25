@@ -18,14 +18,34 @@
 class Google_Service_Speech_RecognitionConfig extends Google_Collection
 {
   protected $collection_key = 'speechContexts';
+  public $enableAutomaticPunctuation;
+  public $enableWordTimeOffsets;
   public $encoding;
   public $languageCode;
   public $maxAlternatives;
+  public $model;
   public $profanityFilter;
   public $sampleRateHertz;
   protected $speechContextsType = 'Google_Service_Speech_SpeechContext';
   protected $speechContextsDataType = 'array';
+  public $useEnhanced;
 
+  public function setEnableAutomaticPunctuation($enableAutomaticPunctuation)
+  {
+    $this->enableAutomaticPunctuation = $enableAutomaticPunctuation;
+  }
+  public function getEnableAutomaticPunctuation()
+  {
+    return $this->enableAutomaticPunctuation;
+  }
+  public function setEnableWordTimeOffsets($enableWordTimeOffsets)
+  {
+    $this->enableWordTimeOffsets = $enableWordTimeOffsets;
+  }
+  public function getEnableWordTimeOffsets()
+  {
+    return $this->enableWordTimeOffsets;
+  }
   public function setEncoding($encoding)
   {
     $this->encoding = $encoding;
@@ -49,6 +69,14 @@ class Google_Service_Speech_RecognitionConfig extends Google_Collection
   public function getMaxAlternatives()
   {
     return $this->maxAlternatives;
+  }
+  public function setModel($model)
+  {
+    $this->model = $model;
+  }
+  public function getModel()
+  {
+    return $this->model;
   }
   public function setProfanityFilter($profanityFilter)
   {
@@ -79,5 +107,13 @@ class Google_Service_Speech_RecognitionConfig extends Google_Collection
   public function getSpeechContexts()
   {
     return $this->speechContexts;
+  }
+  public function setUseEnhanced($useEnhanced)
+  {
+    $this->useEnhanced = $useEnhanced;
+  }
+  public function getUseEnhanced()
+  {
+    return $this->useEnhanced;
   }
 }

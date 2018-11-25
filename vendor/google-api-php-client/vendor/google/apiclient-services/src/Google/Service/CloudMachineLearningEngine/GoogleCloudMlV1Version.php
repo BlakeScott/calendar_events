@@ -17,33 +17,38 @@
 
 class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends Google_Model
 {
-  protected $automaticScalingType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutomaticScaling';
-  protected $automaticScalingDataType = '';
+  protected $autoScalingType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling';
+  protected $autoScalingDataType = '';
   public $createTime;
   public $deploymentUri;
   public $description;
   public $errorMessage;
+  public $etag;
+  public $framework;
   public $isDefault;
+  public $labels;
   public $lastUseTime;
+  public $machineType;
   protected $manualScalingType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ManualScaling';
   protected $manualScalingDataType = '';
   public $name;
+  public $pythonVersion;
   public $runtimeVersion;
   public $state;
 
   /**
-   * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutomaticScaling
+   * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling
    */
-  public function setAutomaticScaling(Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutomaticScaling $automaticScaling)
+  public function setAutoScaling(Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling $autoScaling)
   {
-    $this->automaticScaling = $automaticScaling;
+    $this->autoScaling = $autoScaling;
   }
   /**
-   * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutomaticScaling
+   * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AutoScaling
    */
-  public function getAutomaticScaling()
+  public function getAutoScaling()
   {
-    return $this->automaticScaling;
+    return $this->autoScaling;
   }
   public function setCreateTime($createTime)
   {
@@ -77,6 +82,22 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   {
     return $this->errorMessage;
   }
+  public function setEtag($etag)
+  {
+    $this->etag = $etag;
+  }
+  public function getEtag()
+  {
+    return $this->etag;
+  }
+  public function setFramework($framework)
+  {
+    $this->framework = $framework;
+  }
+  public function getFramework()
+  {
+    return $this->framework;
+  }
   public function setIsDefault($isDefault)
   {
     $this->isDefault = $isDefault;
@@ -85,6 +106,14 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   {
     return $this->isDefault;
   }
+  public function setLabels($labels)
+  {
+    $this->labels = $labels;
+  }
+  public function getLabels()
+  {
+    return $this->labels;
+  }
   public function setLastUseTime($lastUseTime)
   {
     $this->lastUseTime = $lastUseTime;
@@ -92,6 +121,14 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   public function getLastUseTime()
   {
     return $this->lastUseTime;
+  }
+  public function setMachineType($machineType)
+  {
+    $this->machineType = $machineType;
+  }
+  public function getMachineType()
+  {
+    return $this->machineType;
   }
   /**
    * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ManualScaling
@@ -114,6 +151,14 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version extends G
   public function getName()
   {
     return $this->name;
+  }
+  public function setPythonVersion($pythonVersion)
+  {
+    $this->pythonVersion = $pythonVersion;
+  }
+  public function getPythonVersion()
+  {
+    return $this->pythonVersion;
   }
   public function setRuntimeVersion($runtimeVersion)
   {

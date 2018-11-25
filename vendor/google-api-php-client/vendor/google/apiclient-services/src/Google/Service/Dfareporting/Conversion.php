@@ -25,12 +25,15 @@ class Google_Service_Dfareporting_Conversion extends Google_Collection
   public $encryptedUserIdCandidates;
   public $floodlightActivityId;
   public $floodlightConfigurationId;
+  public $gclid;
   public $kind;
   public $limitAdTracking;
   public $mobileDeviceId;
+  public $nonPersonalizedAd;
   public $ordinal;
   public $quantity;
   public $timestampMicros;
+  public $treatmentForUnderage;
   public $value;
 
   public function setChildDirectedTreatment($childDirectedTreatment)
@@ -87,6 +90,14 @@ class Google_Service_Dfareporting_Conversion extends Google_Collection
   {
     return $this->floodlightConfigurationId;
   }
+  public function setGclid($gclid)
+  {
+    $this->gclid = $gclid;
+  }
+  public function getGclid()
+  {
+    return $this->gclid;
+  }
   public function setKind($kind)
   {
     $this->kind = $kind;
@@ -111,6 +122,14 @@ class Google_Service_Dfareporting_Conversion extends Google_Collection
   {
     return $this->mobileDeviceId;
   }
+  public function setNonPersonalizedAd($nonPersonalizedAd)
+  {
+    $this->nonPersonalizedAd = $nonPersonalizedAd;
+  }
+  public function getNonPersonalizedAd()
+  {
+    return $this->nonPersonalizedAd;
+  }
   public function setOrdinal($ordinal)
   {
     $this->ordinal = $ordinal;
@@ -134,6 +153,14 @@ class Google_Service_Dfareporting_Conversion extends Google_Collection
   public function getTimestampMicros()
   {
     return $this->timestampMicros;
+  }
+  public function setTreatmentForUnderage($treatmentForUnderage)
+  {
+    $this->treatmentForUnderage = $treatmentForUnderage;
+  }
+  public function getTreatmentForUnderage()
+  {
+    return $this->treatmentForUnderage;
   }
   public function setValue($value)
   {

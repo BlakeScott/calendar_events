@@ -114,6 +114,20 @@ class Google_Service_FirebaseRules extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'getExecutable' => array(
+              'path' => 'v1/{+name}:getExecutable',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'executableVersion' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
             ),'list' => array(
               'path' => 'v1/{+name}/releases',
               'httpMethod' => 'GET',
@@ -136,9 +150,9 @@ class Google_Service_FirebaseRules extends Google_Service
                   'type' => 'string',
                 ),
               ),
-            ),'update' => array(
+            ),'patch' => array(
               'path' => 'v1/{+name}',
-              'httpMethod' => 'PUT',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
@@ -195,6 +209,10 @@ class Google_Service_FirebaseRules extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -202,10 +220,6 @@ class Google_Service_FirebaseRules extends Google_Service
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
-                ),
-                'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

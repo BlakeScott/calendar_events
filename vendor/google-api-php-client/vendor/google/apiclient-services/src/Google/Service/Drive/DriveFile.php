@@ -23,6 +23,7 @@ class Google_Service_Drive_DriveFile extends Google_Collection
   protected $capabilitiesDataType = '';
   protected $contentHintsType = 'Google_Service_Drive_DriveFileContentHints';
   protected $contentHintsDataType = '';
+  public $copyRequiresWriterPermission;
   public $createdTime;
   public $description;
   public $explicitlyTrashed;
@@ -51,6 +52,7 @@ class Google_Service_Drive_DriveFile extends Google_Collection
   protected $ownersType = 'Google_Service_Drive_User';
   protected $ownersDataType = 'array';
   public $parents;
+  public $permissionIds;
   protected $permissionsType = 'Google_Service_Drive_Permission';
   protected $permissionsDataType = 'array';
   public $properties;
@@ -114,6 +116,14 @@ class Google_Service_Drive_DriveFile extends Google_Collection
   public function getContentHints()
   {
     return $this->contentHints;
+  }
+  public function setCopyRequiresWriterPermission($copyRequiresWriterPermission)
+  {
+    $this->copyRequiresWriterPermission = $copyRequiresWriterPermission;
+  }
+  public function getCopyRequiresWriterPermission()
+  {
+    return $this->copyRequiresWriterPermission;
   }
   public function setCreatedTime($createdTime)
   {
@@ -332,6 +342,14 @@ class Google_Service_Drive_DriveFile extends Google_Collection
   public function getParents()
   {
     return $this->parents;
+  }
+  public function setPermissionIds($permissionIds)
+  {
+    $this->permissionIds = $permissionIds;
+  }
+  public function getPermissionIds()
+  {
+    return $this->permissionIds;
   }
   /**
    * @param Google_Service_Drive_Permission

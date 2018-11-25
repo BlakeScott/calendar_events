@@ -271,6 +271,10 @@ class Google_Service_Storage extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
+                'userProject' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
               ),
             ),'list' => array(
               'path' => 'b',
@@ -294,6 +298,29 @@ class Google_Service_Storage extends Google_Service
                   'type' => 'string',
                 ),
                 'projection' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'userProject' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'lockRetentionPolicy' => array(
+              'path' => 'b/{bucket}/lockRetentionPolicy',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'bucket' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'ifMetagenerationMatch' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userProject' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -1066,6 +1093,10 @@ class Google_Service_Storage extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
+                'includeTrailingDelimiter' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
                 'maxResults' => array(
                   'location' => 'query',
                   'type' => 'integer',
@@ -1335,6 +1366,10 @@ class Google_Service_Storage extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
+                'includeTrailingDelimiter' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
                 'maxResults' => array(
                   'location' => 'query',
                   'type' => 'integer',
@@ -1378,6 +1413,10 @@ class Google_Service_Storage extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'userProject' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),

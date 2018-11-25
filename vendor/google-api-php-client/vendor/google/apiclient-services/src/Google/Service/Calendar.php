@@ -33,9 +33,18 @@ class Google_Service_Calendar extends Google_Service
   /** Manage your calendars. */
   const CALENDAR =
       "https://www.googleapis.com/auth/calendar";
+  /** View and edit events on all your calendars. */
+  const CALENDAR_EVENTS =
+      "https://www.googleapis.com/auth/calendar.events";
+  /** View events on all your calendars. */
+  const CALENDAR_EVENTS_READONLY =
+      "https://www.googleapis.com/auth/calendar.events.readonly";
   /** View your calendars. */
   const CALENDAR_READONLY =
       "https://www.googleapis.com/auth/calendar.readonly";
+  /** View your Calendar settings. */
+  const CALENDAR_SETTINGS_READONLY =
+      "https://www.googleapis.com/auth/calendar.settings.readonly";
 
   public $acl;
   public $calendarList;
@@ -104,6 +113,10 @@ class Google_Service_Calendar extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'sendNotifications' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
               ),
             ),'list' => array(
               'path' => 'calendars/{calendarId}/acl',
@@ -145,6 +158,10 @@ class Google_Service_Calendar extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'sendNotifications' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
               ),
             ),'update' => array(
               'path' => 'calendars/{calendarId}/acl/{ruleId}',
@@ -159,6 +176,10 @@ class Google_Service_Calendar extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'sendNotifications' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ),
               ),
             ),'watch' => array(
@@ -432,6 +453,10 @@ class Google_Service_Calendar extends Google_Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'sendUpdates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
               ),
             ),'get' => array(
               'path' => 'calendars/{calendarId}/events/{eventId}',
@@ -469,6 +494,10 @@ class Google_Service_Calendar extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'conferenceDataVersion' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
                 'supportsAttachments' => array(
                   'location' => 'query',
                   'type' => 'boolean',
@@ -483,6 +512,10 @@ class Google_Service_Calendar extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'conferenceDataVersion' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
                 'maxAttendees' => array(
                   'location' => 'query',
                   'type' => 'integer',
@@ -490,6 +523,10 @@ class Google_Service_Calendar extends Google_Service
                 'sendNotifications' => array(
                   'location' => 'query',
                   'type' => 'boolean',
+                ),
+                'sendUpdates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
                 'supportsAttachments' => array(
                   'location' => 'query',
@@ -650,6 +687,10 @@ class Google_Service_Calendar extends Google_Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'sendUpdates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
               ),
             ),'patch' => array(
               'path' => 'calendars/{calendarId}/events/{eventId}',
@@ -669,6 +710,10 @@ class Google_Service_Calendar extends Google_Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'conferenceDataVersion' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
                 'maxAttendees' => array(
                   'location' => 'query',
                   'type' => 'integer',
@@ -676,6 +721,10 @@ class Google_Service_Calendar extends Google_Service
                 'sendNotifications' => array(
                   'location' => 'query',
                   'type' => 'boolean',
+                ),
+                'sendUpdates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
                 'supportsAttachments' => array(
                   'location' => 'query',
@@ -700,6 +749,10 @@ class Google_Service_Calendar extends Google_Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'sendUpdates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
               ),
             ),'update' => array(
               'path' => 'calendars/{calendarId}/events/{eventId}',
@@ -719,6 +772,10 @@ class Google_Service_Calendar extends Google_Service
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'conferenceDataVersion' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
                 'maxAttendees' => array(
                   'location' => 'query',
                   'type' => 'integer',
@@ -726,6 +783,10 @@ class Google_Service_Calendar extends Google_Service
                 'sendNotifications' => array(
                   'location' => 'query',
                   'type' => 'boolean',
+                ),
+                'sendUpdates' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
                 'supportsAttachments' => array(
                   'location' => 'query',

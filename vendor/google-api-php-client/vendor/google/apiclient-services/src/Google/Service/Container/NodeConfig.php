@@ -18,17 +18,35 @@
 class Google_Service_Container_NodeConfig extends Google_Collection
 {
   protected $collection_key = 'tags';
+  protected $acceleratorsType = 'Google_Service_Container_AcceleratorConfig';
+  protected $acceleratorsDataType = 'array';
   public $diskSizeGb;
+  public $diskType;
   public $imageType;
   public $labels;
   public $localSsdCount;
   public $machineType;
   public $metadata;
+  public $minCpuPlatform;
   public $oauthScopes;
   public $preemptible;
   public $serviceAccount;
   public $tags;
 
+  /**
+   * @param Google_Service_Container_AcceleratorConfig
+   */
+  public function setAccelerators($accelerators)
+  {
+    $this->accelerators = $accelerators;
+  }
+  /**
+   * @return Google_Service_Container_AcceleratorConfig
+   */
+  public function getAccelerators()
+  {
+    return $this->accelerators;
+  }
   public function setDiskSizeGb($diskSizeGb)
   {
     $this->diskSizeGb = $diskSizeGb;
@@ -36,6 +54,14 @@ class Google_Service_Container_NodeConfig extends Google_Collection
   public function getDiskSizeGb()
   {
     return $this->diskSizeGb;
+  }
+  public function setDiskType($diskType)
+  {
+    $this->diskType = $diskType;
+  }
+  public function getDiskType()
+  {
+    return $this->diskType;
   }
   public function setImageType($imageType)
   {
@@ -76,6 +102,14 @@ class Google_Service_Container_NodeConfig extends Google_Collection
   public function getMetadata()
   {
     return $this->metadata;
+  }
+  public function setMinCpuPlatform($minCpuPlatform)
+  {
+    $this->minCpuPlatform = $minCpuPlatform;
+  }
+  public function getMinCpuPlatform()
+  {
+    return $this->minCpuPlatform;
   }
   public function setOauthScopes($oauthScopes)
   {

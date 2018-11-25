@@ -37,13 +37,20 @@ class Google_Service_Container_Cluster extends Google_Collection
   public $labelFingerprint;
   protected $legacyAbacType = 'Google_Service_Container_LegacyAbac';
   protected $legacyAbacDataType = '';
+  public $location;
   public $locations;
   public $loggingService;
+  protected $maintenancePolicyType = 'Google_Service_Container_MaintenancePolicy';
+  protected $maintenancePolicyDataType = '';
   protected $masterAuthType = 'Google_Service_Container_MasterAuth';
   protected $masterAuthDataType = '';
+  protected $masterAuthorizedNetworksConfigType = 'Google_Service_Container_MasterAuthorizedNetworksConfig';
+  protected $masterAuthorizedNetworksConfigDataType = '';
   public $monitoringService;
   public $name;
   public $network;
+  protected $networkConfigType = 'Google_Service_Container_NetworkConfig';
+  protected $networkConfigDataType = '';
   protected $networkPolicyType = 'Google_Service_Container_NetworkPolicy';
   protected $networkPolicyDataType = '';
   protected $nodeConfigType = 'Google_Service_Container_NodeConfig';
@@ -51,6 +58,8 @@ class Google_Service_Container_Cluster extends Google_Collection
   public $nodeIpv4CidrSize;
   protected $nodePoolsType = 'Google_Service_Container_NodePool';
   protected $nodePoolsDataType = 'array';
+  protected $privateClusterConfigType = 'Google_Service_Container_PrivateClusterConfig';
+  protected $privateClusterConfigDataType = '';
   public $resourceLabels;
   public $selfLink;
   public $servicesIpv4Cidr;
@@ -205,6 +214,14 @@ class Google_Service_Container_Cluster extends Google_Collection
   {
     return $this->legacyAbac;
   }
+  public function setLocation($location)
+  {
+    $this->location = $location;
+  }
+  public function getLocation()
+  {
+    return $this->location;
+  }
   public function setLocations($locations)
   {
     $this->locations = $locations;
@@ -222,6 +239,20 @@ class Google_Service_Container_Cluster extends Google_Collection
     return $this->loggingService;
   }
   /**
+   * @param Google_Service_Container_MaintenancePolicy
+   */
+  public function setMaintenancePolicy(Google_Service_Container_MaintenancePolicy $maintenancePolicy)
+  {
+    $this->maintenancePolicy = $maintenancePolicy;
+  }
+  /**
+   * @return Google_Service_Container_MaintenancePolicy
+   */
+  public function getMaintenancePolicy()
+  {
+    return $this->maintenancePolicy;
+  }
+  /**
    * @param Google_Service_Container_MasterAuth
    */
   public function setMasterAuth(Google_Service_Container_MasterAuth $masterAuth)
@@ -234,6 +265,20 @@ class Google_Service_Container_Cluster extends Google_Collection
   public function getMasterAuth()
   {
     return $this->masterAuth;
+  }
+  /**
+   * @param Google_Service_Container_MasterAuthorizedNetworksConfig
+   */
+  public function setMasterAuthorizedNetworksConfig(Google_Service_Container_MasterAuthorizedNetworksConfig $masterAuthorizedNetworksConfig)
+  {
+    $this->masterAuthorizedNetworksConfig = $masterAuthorizedNetworksConfig;
+  }
+  /**
+   * @return Google_Service_Container_MasterAuthorizedNetworksConfig
+   */
+  public function getMasterAuthorizedNetworksConfig()
+  {
+    return $this->masterAuthorizedNetworksConfig;
   }
   public function setMonitoringService($monitoringService)
   {
@@ -258,6 +303,20 @@ class Google_Service_Container_Cluster extends Google_Collection
   public function getNetwork()
   {
     return $this->network;
+  }
+  /**
+   * @param Google_Service_Container_NetworkConfig
+   */
+  public function setNetworkConfig(Google_Service_Container_NetworkConfig $networkConfig)
+  {
+    $this->networkConfig = $networkConfig;
+  }
+  /**
+   * @return Google_Service_Container_NetworkConfig
+   */
+  public function getNetworkConfig()
+  {
+    return $this->networkConfig;
   }
   /**
    * @param Google_Service_Container_NetworkPolicy
@@ -308,6 +367,20 @@ class Google_Service_Container_Cluster extends Google_Collection
   public function getNodePools()
   {
     return $this->nodePools;
+  }
+  /**
+   * @param Google_Service_Container_PrivateClusterConfig
+   */
+  public function setPrivateClusterConfig(Google_Service_Container_PrivateClusterConfig $privateClusterConfig)
+  {
+    $this->privateClusterConfig = $privateClusterConfig;
+  }
+  /**
+   * @return Google_Service_Container_PrivateClusterConfig
+   */
+  public function getPrivateClusterConfig()
+  {
+    return $this->privateClusterConfig;
   }
   public function setResourceLabels($resourceLabels)
   {
