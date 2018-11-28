@@ -26,16 +26,17 @@ function get_data_from_gcal() {
     $current_time = time();
 
     if (empty($events)) {
-      print "No current events.\n";
+      print "No, there aren't any current events right now in the
+      Events calendar.\n";
     } else {
-      print "Current events:\n";
+      print "Yes, there are current events in the Events Calendar.\n";
       $array = array();
         foreach ($events as $event) {
 
           array_push($array, $event->getLocation());
 
         }
-        print_r($array);
+        //print_r($array);
         cache_set('cached_gcal_data', $array, 'cache', $current_time + $cache_lifetime);
     }
 }
