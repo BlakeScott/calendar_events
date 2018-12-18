@@ -16,8 +16,8 @@ function get_data_from_gcal() {
       'maxResults' => 10,
       'orderBy' => 'startTime',
       'singleEvents' => true,
-      'timeMin' => date("c", mktime(date("G"), date("i"), date("s"), date("m"), date("d")-14, date("Y"))),
-      'timeMax' => date("c", mktime(date("G"), date("i"), date("s"), date("m"), date("d")+14, date("Y"))),
+      'timeMin' => date("c", mktime(date("H")-12, date("i"), date("s"), date("m"), date("d"), date("Y"))),
+      'timeMax' => date("c", mktime(date("H")+12, date("i"), date("s"), date("m"), date("d"), date("Y"))),
     );
     $results = $service->events->listEvents($calendarId, $optParams);
     $events = $results->getItems();
