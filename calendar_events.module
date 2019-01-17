@@ -4,7 +4,7 @@ require_once DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/goo
 
 function get_data_from_gcal() {
     //putenv('GOOGLE_APPLICATION_CREDENTIALS=./sites/all/modules/custom/calendar_events/vendor/calendar-events-948c5f78be89.json');
-    putenv('GOOGLE_APPLICATION_CREDENTIALS=' . DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/calendar-events-ADD_THE_REAL_FILE_HERE.json');
+    putenv('GOOGLE_APPLICATION_CREDENTIALS=' . DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/calendar-events-a06518c4d1b5.json');
     $client = new Google_Client();
     $scopes = array('https://www.googleapis.com/auth/calendar.events.readonly');
     $client->useApplicationDefaultCredentials();
