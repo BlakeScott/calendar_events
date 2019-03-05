@@ -78,30 +78,38 @@ function send_event_to_cal() {
 
   $service = new Google_Service_Calendar($client);
 
+  // Get event notification zendesk tickets from cache
+  $tickets_from_cache = cache_get('cached_event_tickets');
+  $event_tickets = array_values($tickets_from_cache->data);
   $calendarId = 'acquia.com_up74cprjekio3bs72tsi7lqg14@group.calendar.google.com';
-  $eventSummary = 'Calendar Event TEST';
-  $eventLocation = '1052';
-  $eventDescription = 'This is a TEST EVENT';
-  $eventStart = '2019-02-27T15:00:00-08:00';
-  $eventEnd = '2019-02-27T16:00:00-08:00';
 
-  $eventParams = new Google_Service_Calendar_Event( array(
-      'summary' => $eventSummary,
-      'location' => $eventLocation,
-      'description' => $eventDescription,
-      'start' => array(
-        'dateTime' => $eventStart,
-        'timeZone' => 'America/Los_Angeles',
-      ),
-      'end' => array(
-        'dateTime' => $eventEnd,
-        'timeZone' => 'America/Los_Angeles',
-      ),
-      'attendees' => array(
-        array('email' => 'adam.rossrussell@acquia.com'),
-      ),
-    ));
-  $event = $service->events->Insert($calendarId, $eventParams);
+  foreach($event_tickets as $tickets=>$ticket_data) {
+    $eventLocation = $ticket_data[0];
+    $eventSummary = $ticket_data[1];
+    $eventDescription = $ticket_data[2];
+    // $eventStart = $ticket_data[3];
+    // $eventEnd = $ticket_data[4];
+
+    $eventParams = new Google_Service_Calendar_Event( array(
+        'summary' => $eventSummary,
+        'location' => $eventLocation,
+        'description' => $eventDescription,
+        'start' => array(
+          'dateTime' => '2019-03-05T15:00:00-08:00',
+          'timeZone' => 'America/Los_Angeles',
+        ),
+        'end' => array(
+          'dateTime' => '2019-03-05T17:00:00-08:00',
+          'timeZone' => 'America/Los_Angeles',
+        ),
+        'attendees' => array(
+          array('email' => 'adam.rossrussell@acquia.com'),
+        ),
+      ));
+    $event = $service->events->Insert($calendarId, $eventParams);
+  }
+
+
   printf('Event created: %s\n', $event->htmlLink);
 }
 
