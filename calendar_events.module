@@ -65,3 +65,44 @@ function get_data_from_gcal() {
 }
 
 get_data_from_gcal();
+
+// -------FOR REVERSE ZD TO CAL INTEGRATION-------
+
+function send_event_to_cal() {
+  //putenv('GOOGLE_APPLICATION_CREDENTIALS=./sites/all/modules/custom/calendar_events/vendor/calendar-events-948c5f78be89.json');
+  putenv('GOOGLE_APPLICATION_CREDENTIALS=' . DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/calendar-events-a06518c4d1b5.json');
+  $client = new Google_Client();
+  $scopes = array('https://www.googleapis.com/auth/calendar');
+  $client->useApplicationDefaultCredentials();
+  $client->setScopes($scopes);
+
+  $service = new Google_Service_Calendar($client);
+
+  $calendarId = 'acquia.com_up74cprjekio3bs72tsi7lqg14@group.calendar.google.com';
+  $eventSummary = 'Calendar Event TEST';
+  $eventLocation = '1052';
+  $eventDescription = 'This is a TEST EVENT';
+  $eventStart = '2019-02-27T15:00:00-08:00';
+  $eventEnd = '2019-02-27T16:00:00-08:00';
+
+  $eventParams = new Google_Service_Calendar_Event( array(
+      'summary' => $eventSummary,
+      'location' => $eventLocation,
+      'description' => $eventDescription,
+      'start' => array(
+        'dateTime' => $eventStart,
+        'timeZone' => 'America/Los_Angeles',
+      ),
+      'end' => array(
+        'dateTime' => $eventEnd,
+        'timeZone' => 'America/Los_Angeles',
+      ),
+      'attendees' => array(
+        array('email' => 'adam.rossrussell@acquia.com'),
+      ),
+    ));
+  $event = $service->events->Insert($calendarId, $eventParams);
+  printf('Event created: %s\n', $event->htmlLink);
+}
+
+// send_event_to_cal();
