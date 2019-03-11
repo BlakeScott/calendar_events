@@ -87,19 +87,21 @@ function send_event_to_cal() {
     $eventLocation = $ticket_data[0];
     $eventSummary = $ticket_data[1];
     $eventDescription = $ticket_data[2];
-    // $eventStart = $ticket_data[3];
-    // $eventEnd = $ticket_data[4];
+    $eventStart = $ticket_data[3];
+    $eventEnd = $ticket_data[4];
 
     $eventParams = new Google_Service_Calendar_Event( array(
         'summary' => $eventSummary,
         'location' => $eventLocation,
         'description' => $eventDescription,
         'start' => array(
-          'dateTime' => '2019-03-05T15:00:00-08:00',
+          // 'dateTime' => '2019-03-05T15:00:00-08:00',
+          'dateTime' => $eventStart,
           'timeZone' => 'America/Los_Angeles',
         ),
         'end' => array(
-          'dateTime' => '2019-03-05T17:00:00-08:00',
+          // 'dateTime' => '2019-03-05T17:00:00-08:00',
+          'dateTime' => $eventEnd,
           'timeZone' => 'America/Los_Angeles',
         ),
         'attendees' => array(
