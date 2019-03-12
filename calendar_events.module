@@ -104,15 +104,10 @@ function send_event_to_cal() {
           'dateTime' => $eventEnd,
           'timeZone' => 'America/Los_Angeles',
         ),
-        'attendees' => array(
-          array('email' => 'adam.rossrussell@acquia.com'),
-        ),
       ));
     $event = $service->events->Insert($calendarId, $eventParams);
+    printf('Event created: %s\n', $event->htmlLink);
   }
-
-
-  printf('Event created: %s\n', $event->htmlLink);
 }
 
 // send_event_to_cal();
