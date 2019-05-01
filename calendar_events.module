@@ -66,6 +66,13 @@ function get_data_from_gcal() {
 
 get_data_from_gcal();
 
+// function drush_calendar_fetch()
+// {
+//     //GET Zendesk Tickets with Event Type
+//     get_data_from_gcal();
+//  }
+
+
 // -------FOR REVERSE ZD TO CAL INTEGRATION-------
 
 function send_event_to_cal() {
@@ -110,4 +117,10 @@ function send_event_to_cal() {
   }
 }
 
-// send_event_to_cal();
+send_event_to_cal();
+
+// function drush_calendar_send()
+// {
+//     //GET Zendesk Tickets with Event Type
+//     send_event_to_cal();
+//  }
