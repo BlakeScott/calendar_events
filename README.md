@@ -34,7 +34,7 @@ For additional information about this library, check out:
 
 * support-service-account@calendar-events-218305.iam.gserviceaccount.com
 
-When a Service Account is created, a public/private key pair is generated and downloaded to your machine; it serves as the only copy of this key.  Ask Blake for the .json file which contains the keys (note: let's figure out a Google Drive location where this file can live, so that all members of the project can access it).  Once you have obtained it, place the .json file in the same `vendor` directory where you added the PHP API Client Library.
+When a Service Account is created, a public/private key pair is generated and downloaded to your machine; it serves as the only copy of this key.  Ask Adam for the .json file which contains the keys (note: let's figure out a Google Drive location where this file can live, so that all members of the project can access it).  Once you have obtained it, place the .json file in the same `vendor` directory where you added the PHP API Client Library.
 
 *Note: If you end up using a different Service Account, the email address for that account will need to be added to the `Share with specific people` list located within the Customer Calendar's settings.*
 
