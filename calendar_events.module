@@ -64,13 +64,14 @@ function get_data_from_gcal() {
       }
 }
 
-get_data_from_gcal();
+// get_data_from_gcal();
 
-// function drush_calendar_fetch()
-// {
-//     //GET Zendesk Tickets with Event Type
-//     get_data_from_gcal();
-//  }
+function drush_calendar_events_cal_fetch()
+{
+    //GET Zendesk Tickets with Event Type
+    get_data_from_gcal();
+    drush_print("calendar events fetch function run");
+ }
 
 
 // -------FOR REVERSE ZD TO CAL INTEGRATION-------
@@ -117,10 +118,11 @@ function send_event_to_cal() {
   }
 }
 
-send_event_to_cal();
+// send_event_to_cal();
 
-// function drush_calendar_send()
-// {
-//     //GET Zendesk Tickets with Event Type
-//     send_event_to_cal();
-//  }
+function drush_calendar_events_cal_send()
+{
+    //GET Zendesk Tickets with Event Type
+    send_event_to_cal();
+    drush_print("calendar events send function run");
+ }
