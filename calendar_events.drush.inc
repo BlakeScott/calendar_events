@@ -45,28 +45,25 @@ function calendar_events_get_gcal_events() {
     'timeMax' => date("c", mktime(date("H")+12, date("i"), date("s"), date("m"), date("d"), date("Y"))),
   );
   try {
-    $results = $service->events->listEvents($calendarId, $optParams);
-  } catch (ApiResponseException $cal_get_e) {
-    watchdog_exception($cal_get_e);
-    drush_print($cal_get_e);
-  }
-  $events = $results->getItems();
-  // Set cache lifetime.
-  $cache_lifetime = 3600;
-  // Establish the current time as a unix timestamp.
-  $current_time = time();
-  if (empty($events)) {
-    drush_print("There are no current events in the Customer Events calendar right now.");
-    return;
-  }
-  else {
+      $results = $service->events->listEvents($calendarId, $optParams);
+    }
+    catch (ApiResponseException $cal_get_e) {
+      watchdog_exception("calendar_events", $cal_get_e);
+    }
+    $events = $results->getItems();
+    if (empty($events)) {
+      drush_print("There are no current events in the Customer Events calendar right now.");
+      return;
+    }
     drush_print("There are current events in the Events Calendar right now.");
     $location_array = array();
     $creator_emails = array();
     drush_print("Calendar Events Found:");
     foreach ($events as $event) {
       array_push($location_array, $event->getLocation());
-      drush_print(dt( "Event Name: @event_summary", ['@event_summary' => $event->getSummary()]));
+      drush_print(dt("Event Name: @event_summary", [
+        '@event_summary' => $event->getSummary(),
+      ]));
       // Get event creator information.
       $creator = $event->getCreator();
       array_push($creator_emails, $creator->email);
@@ -75,26 +72,29 @@ function calendar_events_get_gcal_events() {
     $user_error_position = array();
     foreach ($location_array as $key => $location_id) {
       // Zendesk ticket # Validation:
-      // Validating 6 digit number (current zendesk ticket number length).
-      // Validating 3 & 4 digits (sandbox ticket number length)
-      if (preg_match('/^\d{3,7}$/', $location_id)) {
+      // Validate the submission is a number.
+      if (preg_match('/^\d+$/', $location_id)) {
         array_push($validated_array, $location_id);
+        continue;
       }
-      else {
-        // If number is not a zendesk ticket number, print incorrect submission.
-        drush_print(dt("Tickets have been submitted in the incorrect format @location_id", ['@location_id' => $location_id]));
-        array_push($user_error_position, $key);
-      }
+      // If number is not a zendesk ticket number, print incorrect submission.
+      drush_print(dt("Tickets have been submitted in the incorrect format @location_id", [
+        '@location_id' => $location_id,
+      ]));
+      array_push($user_error_position, $key);
     }
     // Find email address of users with errors.
     foreach ($user_error_position as $array_position) {
       $email = $creator_emails[$array_position];
-      drush_print(dt("User who inputted error is @user_email", ['@user_email' => $email]));
+      drush_print(dt("User who inputted error is @user_email", [
+        '@user_email' => $email,
+      ]));
     }
+    $cache_lifetime = variable_get('calendar_events_gcal_cache_lifetime');
+    $current_time = time();
     // Set cache with results.
-    cache_set('cached_gcal_data', $validated_array, 'cache', $current_time + $cache_lifetime);
+    cache_set('calendar_events_gcal_data', $validated_array, 'cache', $current_time + $cache_lifetime);
   }
-}
 
 // get_data_from_gcal();
 
