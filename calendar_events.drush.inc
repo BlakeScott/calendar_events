@@ -25,7 +25,7 @@ function calendar_events_drush_command(){
 require_once DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/autoload.php';
 
 function calendar_events_get_client() {
-  putenv('GOOGLE_APPLICATION_CREDENTIALS=' . DRUPAL_ROOT . '/sites/all/modules/custom/calendar_events/vendor/calendar-events-a06518c4d1b5.json');
+  putenv('GOOGLE_APPLICATION_CREDENTIALS=' . '/mnt/gfs/eearossrussell.prod/nobackup/apikeys/calendar-events-a63526983c2d.json');
   $client = new Google_Client();
   $scopes = array('https://www.googleapis.com/auth/calendar.events.readonly');
   $client->useApplicationDefaultCredentials();
@@ -33,7 +33,6 @@ function calendar_events_get_client() {
   $service = new Google_Service_Calendar($client);
   return $service;
 }
-
 function calendar_events_get_gcal_events() {
   $service = calendar_events_get_client();
   $calendarId = 'acquia.com_up74cprjekio3bs72tsi7lqg14@group.calendar.google.com';
